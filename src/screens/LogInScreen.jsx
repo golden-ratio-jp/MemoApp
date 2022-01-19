@@ -1,7 +1,7 @@
 import { bold, styles } from 'ansi-colors';
 import React from 'react';
 import {
-     View,  StyleSheet, TextInput, Text,
+     View,  StyleSheet, TextInput, Text, Touchable, TouchableOpacity,
 } from 'react-native';
 
 import AppBar from '../components/AppBar';
@@ -18,7 +18,10 @@ export default function LogInScreen() {
                 <Button label="submit" />
                 <View style={Styles.footer}>
                     <Text style={Styles.footerText}>Not registered?</Text>
-                    <Text style={Styles.footerLink}>Sign up here!</Text>
+                    <TouchableOpacity>
+                        <Text style={Styles.footerLink}>Sign up here!</Text>
+                    </TouchableOpacity>
+
                 </View>
             </View>
         </View>

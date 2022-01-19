@@ -1,19 +1,24 @@
 import { styles } from 'ansi-colors';
-import { string } from 'prop-types';
+import { func, string } from 'prop-types';
 import React from 'react';
-import { View,  StyleSheet,  Text,} from 'react-native';
+import { TouchableOpacity,  StyleSheet,  Text,} from 'react-native';
 
 export default function Button(props) {
-    const { label } = props;
+    const { label,onPress } = props;
     return (
-        <View style={Styles.buttonContainer}>
+        <TouchableOpacity style={Styles.buttonContainer} onPress={onPress}>
             <Text style={Styles.buttonLabel}>{label}</Text>
-        </View>
+        </TouchableOpacity>
     );
 }
 
 Button.prototype ={
     label: string.isRequired,
+    onPress: func,
+};
+
+Button.defaultProps = {
+    onPress: null,
 };
 
 const Styles = StyleSheet.create({
