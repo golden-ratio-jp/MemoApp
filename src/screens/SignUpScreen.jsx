@@ -4,21 +4,35 @@ import {
      View,  StyleSheet, TextInput, Text, TouchableOpacity
 } from 'react-native';
 
-import AppBar from '../components/AppBar';
 import Button from '../components/Button';
 
-export default function SignUpScreen() {
+export default function SignUpScreen(props) {
+    const { navigation } = props;
     return (
         <View style={Styles.container}>
-            <AppBar />
             <View style={Styles.inner}>
                 <Text style={Styles.title}>Sign Up</Text>
                 <TextInput style={Styles.input} value="Email Address" />
                 <TextInput style={Styles.input} value="Password" />
-                <Button label="submit" />
+                <Button
+                    label="submit"
+                    onPress={() => {
+                        navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'MemoList'}],
+                        })
+                    }}
+                />
                 <View style={Styles.footer}>
                     <Text style={Styles.footerText}>Already registered?</Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => {
+                            navigation.reset({
+                                index: 0,
+                                  routes: [{ name:'LogIn'}],
+                            });
+                         }}
+                    >
                         <Text style={Styles.footerLink}>Log In.</Text>
                     </TouchableOpacity>
 
@@ -31,7 +45,7 @@ export default function SignUpScreen() {
 const Styles =StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFF1F8',
+        backgroundColor: '#FFFCFD',
     },
     inner:{
         paddingHorizontal: 27,
